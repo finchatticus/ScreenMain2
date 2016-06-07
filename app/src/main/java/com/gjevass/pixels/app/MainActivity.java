@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -66,21 +65,19 @@ public class MainActivity extends Activity {
             //bitmap2Scalled = Bitmap.createScaledBitmap(bitmap2, 212, 300, true);
         }
 
+
+
+        ElementImage elementImage0 = new ElementImage(130, 617, 3, 1 / 2.34f, R.drawable.test_pst, this);
+        ElementImage elementImage1 = new ElementImage(334, 677, -1, 1 / 2.34f, R.drawable.test_pst, this);
+
+        List<ElementImage> elementImageList = new ArrayList<ElementImage>();
+        elementImageList.add(elementImage0);
+        elementImageList.add(elementImage1);
         
-
-        Part1 part1 = new Part1(130, 617, 3, 1 / 2.34f, 1 / 2.34f, R.drawable.test_pst, this);
-        Part1 part2 = new Part1(334, 677, -1, 1 / 2.34f, 1 / 2.34f, R.drawable.test_pst, this);
-
-        System.out.println("part1 " + part1);
-        System.out.println("part2 " + part2);
-
-
-
-
         bitmapList.add(bitmap1Scalled);
         bitmapList.add(bitmap2Scalled);
 
-        Adapter adapter = new Adapter(this, bitmapList);
+        Adapter adapter = new Adapter(this, bitmapList, elementImageList);
         listView.setAdapter(adapter);
     }
 }

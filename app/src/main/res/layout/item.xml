@@ -8,19 +8,19 @@
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/image1"
+            android:id="@+id/imageBackground"
             android:contentDescription="test"/>
 
-    <ImageView
+    <com.gjevass.pixels.app.ElementImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/image2"
+            android:id="@+id/elementImage0"
             android:contentDescription="test"/>
 
-    <ImageView
+    <com.gjevass.pixels.app.ElementImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/image3"
+            android:id="@+id/elementImage1"
             android:contentDescription="test"/>
 
 </FrameLayout>

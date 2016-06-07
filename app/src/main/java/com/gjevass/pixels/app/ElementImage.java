@@ -6,25 +6,23 @@ import android.graphics.BitmapFactory;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
-public class Part1 {
+public class ElementImage {
 
     private int width;
     private int height;
     private int x;
     private int y;
     private float rotation;
-    private float scaleFactorCoord;
-    private float scaleFactorDimension;
+    private float scaleFactor;
     private int resourceId;
     private Bitmap bitmap;
     private Context context;
 
-    public Part1(int x, int y, float rotation, float scaleFactorCoord, float scaleFactorDimension, int resourceId, Context context) {
+    public ElementImage(int x, int y, float rotation, float scaleFactor, int resourceId, Context context) {
         this.x = x;
         this.y = y;
         this.rotation = rotation;
-        this.scaleFactorCoord = scaleFactorCoord;
-        this.scaleFactorDimension = scaleFactorDimension;
+        this.scaleFactor = scaleFactor;
         this.resourceId = resourceId;
         this.context = context;
 
@@ -32,29 +30,64 @@ public class Part1 {
         calc(bitmap);
     }
 
-    public Part1(int x, int y, float rotation, float scaleFactorCoord, float scaleFactorDimension, Bitmap bitmap, Context context) {
+    public ElementImage(int x, int y, float rotation, float scaleFactor, Bitmap bitmap, Context context) {
         this.x = x;
         this.y = y;
         this.rotation = rotation;
-        this.scaleFactorCoord = scaleFactorCoord;
-        this.scaleFactorDimension = scaleFactorDimension;
+        this.scaleFactor = scaleFactor;
         this.bitmap = bitmap;
         this.context = context;
     }
 
     private void calc(Bitmap bitmap) {
-        this.x = Math.round(this.x * scaleFactorCoord);
-        this.y = Math.round(this.y * scaleFactorCoord);
+        this.x = Math.round(this.x * scaleFactor);
+        this.y = Math.round(this.y * scaleFactor);
 
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics displayMetrics = new DisplayMetrics();
         windowManager.getDefaultDisplay().getMetrics(displayMetrics);
         float density = displayMetrics.density;
 
-        this.height = Math.round((bitmap.getHeight() / density) * scaleFactorDimension);
-        this.width = Math.round((bitmap.getWidth() / density) * scaleFactorDimension);
+        this.height = Math.round((bitmap.getHeight() / density) * scaleFactor);
+        this.width = Math.round((bitmap.getWidth() / density) * scaleFactor);
 
         this.bitmap = Bitmap.createScaledBitmap(bitmap, this.width, this.height, true);
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public float getRotation() {
+        return rotation;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public float getScaleFactor() {
+        return scaleFactor;
+    }
+
+    public int getResourceId() {
+        return resourceId;
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public Context getContext() {
+        return context;
     }
 
     @Override
@@ -65,8 +98,7 @@ public class Part1 {
                 ", x=" + x +
                 ", y=" + y +
                 ", rotation=" + rotation +
-                ", scaleFactorCoord=" + scaleFactorCoord +
-                ", scaleFactorDimension=" + scaleFactorDimension +
+                ", scaleFactor=" + scaleFactor +
                 ", resourceId=" + resourceId +
                 ", bitmap=" + bitmap +
                 ", context=" + context +
