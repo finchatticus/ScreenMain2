@@ -10,6 +10,7 @@ import com.gjevass.pixels.app.json.JSONParser;
 import com.gjevass.pixels.app.ui.Adapter;
 import com.gjevass.pixels.app.ui.BackgroundImage;
 import com.gjevass.pixels.app.ui.ElementImage;
+import com.gjevass.pixels.app.ui.ViewType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,11 +39,11 @@ public class MainActivity extends Activity {
         }
         listBackground.get(0).setMarginTop(Math.round(-1000 * listBackground.get(0).getScaleFactor()));
         listBackground.get(4).setMarginBottom(Math.round(-1000 * listBackground.get(4).getScaleFactor()));
-        listBackground.get(0).setType(0);
-        listBackground.get(1).setType(1);
-        listBackground.get(2).setType(0);
-        listBackground.get(3).setType(2);
-        listBackground.get(4).setType(0);
+        listBackground.get(0).setType(ViewType.EMPTY);
+        listBackground.get(1).setType(ViewType.PART1);
+        listBackground.get(2).setType(ViewType.EMPTY);
+        listBackground.get(3).setType(ViewType.PART2);
+        listBackground.get(4).setType(ViewType.EMPTY);
 
         scaleFactor = listBackground.get(0).getScaleFactor();
 

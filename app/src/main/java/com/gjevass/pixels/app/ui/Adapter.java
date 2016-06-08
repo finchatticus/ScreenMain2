@@ -17,9 +17,6 @@ public class Adapter extends BaseAdapter {
     private List<BackgroundImage> listBackground;
     private List<ElementImage> elementImageList;
     private LayoutInflater layoutInflater;
-    private final int VIEW_EMPTY = 0;
-    private final int VIEW_PART1 = 1;
-    private final int VIEW_PART2 = 2;
 
     public Adapter(Context context, List<BackgroundImage> listBackground) {
         this.listBackground = listBackground;
@@ -43,14 +40,14 @@ public class Adapter extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        if(listBackground.get(position).getType() == VIEW_EMPTY) {
-            return VIEW_EMPTY;
+        if(listBackground.get(position).getType() == ViewType.EMPTY) {
+            return ViewType.EMPTY.getType();
         }
-        else if(listBackground.get(position).getType() == VIEW_PART1) {
-            return VIEW_PART1;
+        else if(listBackground.get(position).getType() == ViewType.PART1) {
+            return ViewType.PART1.getType();
         }
         else {
-            return VIEW_PART2;
+            return ViewType.PART2.getType();
         }
     }
 
@@ -69,7 +66,7 @@ public class Adapter extends BaseAdapter {
 
         BackgroundImage backgroundImage = (BackgroundImage) getItem(i);
 
-        if(type == VIEW_EMPTY) {
+        if(type == ViewType.EMPTY.getType()) {
             view = layoutInflater.inflate(R.layout.item_empty, parent, false);
             emptyViewHolder = new ViewHolder().new EmptyViewHolder();
             emptyViewHolder.imageViewBackround = (ImageView)  view.findViewById(R.id.image_empty_background);
@@ -81,7 +78,7 @@ public class Adapter extends BaseAdapter {
 
             emptyViewHolder.imageViewBackround.setImageBitmap(listBackground.get(i).getBitmap());
         }
-        else if(type == VIEW_PART1) {
+        else if(type == ViewType.PART1.getType()) {
             view = layoutInflater.inflate(R.layout.item_part1, parent, false);
             part1ViewHolder = new ViewHolder().new Part1ViewHolder();
             part1ViewHolder.imageViewBackground = (ImageView)  view.findViewById(R.id.image_part1_background);

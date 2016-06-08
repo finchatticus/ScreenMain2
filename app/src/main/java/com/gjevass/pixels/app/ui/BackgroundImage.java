@@ -13,7 +13,7 @@ public class BackgroundImage {
     private float scaleFactor;
     private Bitmap bitmap;
     private Context context;
-    private int type;
+    private ViewType type;
 
     public BackgroundImage(int resourceId, Context context) {
         this.resourceId = resourceId;
@@ -25,18 +25,6 @@ public class BackgroundImage {
         int imageHeight = imageUtil.getRealHeight();
         int displayWidth = displayUtil.getWidth();
         int displayHeight = displayUtil.getHeight();
-
-        //my
-/*        int displayWidth = 800;
-        int displayHeight = 1216;*/
-
-        //sem
-/*        int displayWidth = 320;
-        int displayHeight = 480;*/
-
-        //fullHD
-/*        int displayWidth = 1080;
-        int displayHeight = 1920;*/
 
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), resourceId);
 
@@ -84,11 +72,11 @@ public class BackgroundImage {
         this.marginBottom = marginBottom;
     }
 
-    public int getType() {
+    public ViewType getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(ViewType type) {
         this.type = type;
     }
 
