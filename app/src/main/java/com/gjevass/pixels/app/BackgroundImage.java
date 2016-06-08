@@ -22,19 +22,19 @@ public class BackgroundImage {
 
         int imageWidth = imageUtil.getRealWidth();
         int imageHeight = imageUtil.getRealHeight();
-/*        int displayWidth = displayUtil.getWidth();
-        int displayHeight = displayUtil.getHeight();*/
+        int displayWidth = displayUtil.getWidth();
+        int displayHeight = displayUtil.getHeight();
 
         //my
         /*int displayWidth = 800;
         int displayHeight = 1216;*/
 
         //sem
-        int displayWidth = 320;
-        int displayHeight = 480;
+/*        int displayWidth = 320;
+        int displayHeight = 480;*/
 
         //fullHD
-        /*int displayWidth = 1080;
+/*        int displayWidth = 1080;
         int displayHeight = 1920;*/
 
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), resourceId);

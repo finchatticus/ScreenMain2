@@ -45,12 +45,22 @@ public class Adapter extends BaseAdapter {
         }
 
         ImageView imageViewBackground = (ImageView) view.findViewById(R.id.imageBackground);
+        imageViewBackground.setImageBitmap(listBackground.get(i).getBitmap());
+
         ElementImageView elementImageView0 = (ElementImageView) view.findViewById(R.id.elementImage0);
         ElementImageView elementImageView1 = (ElementImageView) view.findViewById(R.id.elementImage1);
-        imageViewBackground.setImageBitmap(listBackground.get(i).getBitmap());
+        ElementImageView elementImageView2 = (ElementImageView) view.findViewById(R.id.elementImage2);
+        ElementImageView elementImageView3 = (ElementImageView) view.findViewById(R.id.elementImage3);
+        ElementImageView elementImageView4 = (ElementImageView) view.findViewById(R.id.elementImage4);
+
+
+
 
         elementImageView0.setElementImage(elementImageList.get(0));
         elementImageView1.setElementImage(elementImageList.get(1));
+        elementImageView2.setElementImage(elementImageList.get(2));
+        elementImageView3.setElementImage(elementImageList.get(3));
+        elementImageView4.setElementImage(elementImageList.get(4));
 
         return view;
     }

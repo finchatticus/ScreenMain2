@@ -41,8 +41,28 @@ public class MainActivity extends Activity {
         float scaleFactor = listBackground.get(0).getScaleFactor();
 
         List<ElementImage> elementImageList = new ArrayList<ElementImage>();
+        //poster1
         elementImageList.add(new ElementImage(130, 617, 3, scaleFactor, R.drawable.test_pst, this));
+        //poster2
         elementImageList.add(new ElementImage(334, 677, -1, scaleFactor, R.drawable.test_pst, this));
+        //poster1 frame
+        elementImageList.add(new ElementImage(124, 611, 3, scaleFactor, R.drawable.main_poster_frame, this));
+        //poster2 frame
+        elementImageList.add(new ElementImage(328, 671, -1, scaleFactor, R.drawable.main_poster_frame, this));
+        //sticks frame
+        elementImageList.add(new ElementImage(110, 595, 0, scaleFactor, R.drawable.main_sticks, this));
+
+        //poster3
+        elementImageList.add(new ElementImage(84, 1100, 2, scaleFactor, R.drawable.test_pst, this));
+        //poster4
+        elementImageList.add(new ElementImage(372, 1098, 2.5f, scaleFactor, R.drawable.test_pst, this));
+        //pin
+        elementImageList.add(new ElementImage(212, 206, 0, scaleFactor, R.drawable.main_pin, this));
+        //light
+        elementImageList.add(new ElementImage(344, 495, 0, scaleFactor, R.drawable.main_light, this));
+        //sticker
+        //elementImageList.add(new ElementImage(372, 1098, 2.5f, scaleFactor, R.drawable.test_pst, this));
+
 
         Adapter adapter = new Adapter(this, listBackground, elementImageList);
         listView.setAdapter(adapter);

@@ -25,4 +25,22 @@
             android:id="@+id/elementImage1"
             android:contentDescription="test"/>
 
+    <com.gjevass.pixels.app.ElementImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/elementImage2"
+            android:contentDescription="test"/>
+
+    <com.gjevass.pixels.app.ElementImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/elementImage3"
+            android:contentDescription="test"/>
+
+    <com.gjevass.pixels.app.ElementImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/elementImage4"
+            android:contentDescription="test"/>
+
 </FrameLayout>
