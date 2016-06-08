@@ -93,10 +93,10 @@ public class Adapter extends BaseAdapter {
             part1ViewHolder.imageViewBackground.setImageBitmap(backgroundImage.getBitmap());
 
             if(elementImageList != null) {
-                part1ViewHolder.imageViewEl0.setElementImage(elementImageList.get(0));
-                part1ViewHolder.imageViewEl1.setElementImage(elementImageList.get(2));
-                part1ViewHolder.imageViewEl2.setElementImage(elementImageList.get(1));
-                part1ViewHolder.imageViewEl3.setElementImage(elementImageList.get(3));
+                part1ViewHolder.imageViewEl0.setElementImage(elementImageList.get(2));
+                part1ViewHolder.imageViewEl1.setElementImage(elementImageList.get(0));
+                part1ViewHolder.imageViewEl2.setElementImage(elementImageList.get(3));
+                part1ViewHolder.imageViewEl3.setElementImage(elementImageList.get(1));
                 part1ViewHolder.imageViewEl4.setElementImage(elementImageList.get(4));
             }
         }
