@@ -76,10 +76,12 @@ public class BackgroundImage {
     }
 
     public void setMarginTop(int marginTop) {
+        System.out.println("set margin top " + marginTop);
         this.marginTop = marginTop;
     }
 
     public void setMarginBottom(int marginBottom) {
+        System.out.println("set margin bottom " + marginTop);
         this.marginBottom = marginBottom;
     }
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import java.util.List;
@@ -16,10 +17,9 @@ public class Adapter extends BaseAdapter {
     private List<BackgroundImage> listBackground;
     private List<ElementImage> elementImageList;
 
-    public Adapter(Context context, List<BackgroundImage> listBackground, List<ElementImage> elementImageList) {
+    public Adapter(Context context, List<BackgroundImage> listBackground) {
         this.context = context;
         this.listBackground = listBackground;
-        this.elementImageList = elementImageList;
     }
 
     @Override
@@ -44,8 +44,12 @@ public class Adapter extends BaseAdapter {
             view = layoutInflater.inflate(R.layout.item, viewGroup, false);
         }
 
+        BackgroundImage backgroundImage = (BackgroundImage) getItem(i);
+
         ImageView imageViewBackground = (ImageView) view.findViewById(R.id.imageBackground);
-        imageViewBackground.setImageBitmap(listBackground.get(i).getBitmap());
+        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(imageViewBackground.getLayoutParams());
+        lp.setMargins(0, backgroundImage.getMarginTop(), 0, backgroundImage.getMarginBottom());
+        imageViewBackground.setImageBitmap(backgroundImage.getBitmap());
 
         ElementImageView elementImageView0 = (ElementImageView) view.findViewById(R.id.elementImage0);
         ElementImageView elementImageView1 = (ElementImageView) view.findViewById(R.id.elementImage1);
@@ -53,15 +57,27 @@ public class Adapter extends BaseAdapter {
         ElementImageView elementImageView3 = (ElementImageView) view.findViewById(R.id.elementImage3);
         ElementImageView elementImageView4 = (ElementImageView) view.findViewById(R.id.elementImage4);
 
-
-
-
-        elementImageView0.setElementImage(elementImageList.get(0));
-        elementImageView1.setElementImage(elementImageList.get(1));
-        elementImageView2.setElementImage(elementImageList.get(2));
-        elementImageView3.setElementImage(elementImageList.get(3));
-        elementImageView4.setElementImage(elementImageList.get(4));
+        if(elementImageList != null) {
+            if(i == 1) {
+                elementImageView0.setElementImage(elementImageList.get(2));
+                elementImageView1.setElementImage(elementImageList.get(3));
+                elementImageView2.setElementImage(elementImageList.get(0));
+                elementImageView3.setElementImage(elementImageList.get(1));
+                elementImageView4.setElementImage(elementImageList.get(4));
+            }
+            if(i == 3) {
+                elementImageView0.setElementImage(elementImageList.get(5));
+                elementImageView1.setElementImage(elementImageList.get(6));
+                elementImageView2.setElementImage(elementImageList.get(7));
+                elementImageView3.setElementImage(elementImageList.get(8));
+                elementImageView4.setVisibility(View.INVISIBLE);
+            }
+        }
 
         return view;
+    }
+
+    public void setElementImageList(List<ElementImage> elementImageList) {
+        this.elementImageList = elementImageList;
     }
 }

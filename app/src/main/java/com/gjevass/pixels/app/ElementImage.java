@@ -47,7 +47,6 @@ public class ElementImage {
 
         this.height = Math.round((bitmap.getHeight() / density) * scaleFactor);
         this.width = Math.round((bitmap.getWidth() / density) * scaleFactor);
-
         this.bitmap = Bitmap.createScaledBitmap(bitmap, this.width, this.height, true);
     }
 
