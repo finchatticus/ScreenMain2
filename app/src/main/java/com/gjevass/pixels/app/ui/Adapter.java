@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import com.gjevass.pixels.app.R;
+import com.gjevass.pixels.app.model.BackgroundImage;
+import com.gjevass.pixels.app.model.ElementImage;
 import com.gjevass.pixels.app.viewholder.ViewHolder;
 
 import java.util.List;

@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.widget.ListView;
 import com.gjevass.pixels.app.json.JSONParser;
 import com.gjevass.pixels.app.ui.Adapter;
-import com.gjevass.pixels.app.ui.BackgroundImage;
-import com.gjevass.pixels.app.ui.ElementImage;
+import com.gjevass.pixels.app.model.BackgroundImage;
+import com.gjevass.pixels.app.model.ElementImage;
 import com.gjevass.pixels.app.ui.ViewType;
 
 import java.util.ArrayList;

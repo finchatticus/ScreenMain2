@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import com.gjevass.pixels.app.model.ElementImage;
 
 public class ElementImageView extends ImageView {
 

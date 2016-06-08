@@ -1,8 +1,9 @@
-package com.gjevass.pixels.app.ui;
+package com.gjevass.pixels.app.model;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import com.gjevass.pixels.app.ui.ViewType;
 import com.gjevass.pixels.app.util.DisplayUtil;
 import com.gjevass.pixels.app.util.ImageUtil;
 
