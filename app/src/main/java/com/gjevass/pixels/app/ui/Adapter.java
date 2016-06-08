@@ -8,18 +8,22 @@ import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import com.gjevass.pixels.app.R;
+import com.gjevass.pixels.app.viewholder.ViewHolder;
 
 import java.util.List;
 
 public class Adapter extends BaseAdapter {
 
-    private Context context;
     private List<BackgroundImage> listBackground;
     private List<ElementImage> elementImageList;
+    private LayoutInflater layoutInflater;
+    private final int VIEW_EMPTY = 0;
+    private final int VIEW_PART1 = 1;
+    private final int VIEW_PART2 = 2;
 
     public Adapter(Context context, List<BackgroundImage> listBackground) {
-        this.context = context;
         this.listBackground = listBackground;
+        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -38,64 +42,83 @@ public class Adapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        if(view == null) {
-            view = layoutInflater.inflate(R.layout.item, viewGroup, false);
+    public int getItemViewType(int position) {
+        if(listBackground.get(position).getType() == VIEW_EMPTY) {
+            return VIEW_EMPTY;
         }
+        else if(listBackground.get(position).getType() == VIEW_PART1) {
+            return VIEW_PART1;
+        }
+        else {
+            return VIEW_PART2;
+        }
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return 3;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup parent) {
+        ViewHolder.EmptyViewHolder emptyViewHolder;
+        ViewHolder.Part1ViewHolder part1ViewHolder;
+        ViewHolder.Part2ViewHolder part2ViewHolder;
+
+        int type = getItemViewType(i);
 
         BackgroundImage backgroundImage = (BackgroundImage) getItem(i);
 
-        ImageView imageViewBackground = (ImageView) view.findViewById(R.id.imageBackground);
-        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(imageViewBackground.getLayoutParams());
-        lp.setMargins(0, backgroundImage.getMarginTop(), 0 ,backgroundImage.getMarginBottom());
-        imageViewBackground.setLayoutParams(lp);
-        imageViewBackground.setImageBitmap(backgroundImage.getBitmap());
+        if(type == VIEW_EMPTY) {
+            view = layoutInflater.inflate(R.layout.item_empty, parent, false);
+            emptyViewHolder = new ViewHolder().new EmptyViewHolder();
+            emptyViewHolder.imageViewBackround = (ImageView)  view.findViewById(R.id.image_empty_background);
 
-        ElementImageView elementImageView0 = (ElementImageView) view.findViewById(R.id.elementImage0);
-        ElementImageView elementImageView1 = (ElementImageView) view.findViewById(R.id.elementImage1);
-        ElementImageView elementImageView2 = (ElementImageView) view.findViewById(R.id.elementImage2);
-        ElementImageView elementImageView3 = (ElementImageView) view.findViewById(R.id.elementImage3);
-        ElementImageView elementImageView4 = (ElementImageView) view.findViewById(R.id.elementImage4);
+            FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(emptyViewHolder.imageViewBackround.getLayoutParams());
+            lp.setMargins(0, backgroundImage.getMarginTop(), 0 , backgroundImage.getMarginBottom());
+            emptyViewHolder.imageViewBackround.setLayoutParams(lp);
+            emptyViewHolder.imageViewBackround.setImageBitmap(backgroundImage.getBitmap());
 
-        System.out.println("i = " + i);
+            emptyViewHolder.imageViewBackround.setImageBitmap(listBackground.get(i).getBitmap());
+        }
+        else if(type == VIEW_PART1) {
+            view = layoutInflater.inflate(R.layout.item_part1, parent, false);
+            part1ViewHolder = new ViewHolder().new Part1ViewHolder();
+            part1ViewHolder.imageViewBackground = (ImageView)  view.findViewById(R.id.image_part1_background);
+            part1ViewHolder.imageViewEl0 = (ElementImageView) view.findViewById(R.id.element_part1_image0);
+            part1ViewHolder.imageViewEl1 = (ElementImageView) view.findViewById(R.id.element_part1_image1);
+            part1ViewHolder.imageViewEl2 = (ElementImageView) view.findViewById(R.id.element_part1_image2);
+            part1ViewHolder.imageViewEl3 = (ElementImageView) view.findViewById(R.id.element_part1_image3);
+            part1ViewHolder.imageViewEl4 = (ElementImageView) view.findViewById(R.id.element_part1_image4);
 
-        if(elementImageList != null) {
-            if(i == 1) {
-                System.out.println("if 1");
-                elementImageView0.setVisibility(View.VISIBLE);
-                elementImageView1.setVisibility(View.VISIBLE);
-                elementImageView2.setVisibility(View.VISIBLE);
-                elementImageView3.setVisibility(View.VISIBLE);
-                elementImageView4.setVisibility(View.VISIBLE);
+            part1ViewHolder.imageViewBackground.setImageBitmap(backgroundImage.getBitmap());
 
-                elementImageView0.setElementImage(elementImageList.get(0));
-                elementImageView1.setElementImage(elementImageList.get(2));
-                elementImageView2.setElementImage(elementImageList.get(1));
-                elementImageView3.setElementImage(elementImageList.get(3));
-                elementImageView4.setElementImage(elementImageList.get(4));
+            if(elementImageList != null) {
+                part1ViewHolder.imageViewEl0.setElementImage(elementImageList.get(0));
+                part1ViewHolder.imageViewEl1.setElementImage(elementImageList.get(2));
+                part1ViewHolder.imageViewEl2.setElementImage(elementImageList.get(1));
+                part1ViewHolder.imageViewEl3.setElementImage(elementImageList.get(3));
+                part1ViewHolder.imageViewEl4.setElementImage(elementImageList.get(4));
             }
-/*            if(i == 3) {
-                System.out.println("if 3");
-                elementImageView0.setVisibility(View.VISIBLE);
-                elementImageView1.setVisibility(View.VISIBLE);
-                elementImageView2.setVisibility(View.VISIBLE);
-                elementImageView3.setVisibility(View.VISIBLE);
-                elementImageView4.setVisibility(View.GONE);
+        }
+        else {
+            view = layoutInflater.inflate(R.layout.item_part2, parent, false);
+            part2ViewHolder = new ViewHolder().new Part2ViewHolder();
+            part2ViewHolder.imageViewBackground = (ImageView)  view.findViewById(R.id.image_part2_background);
+            part2ViewHolder.imageViewEl0 = (ElementImageView) view.findViewById(R.id.element_part2_image0);
+            part2ViewHolder.imageViewEl1 = (ElementImageView) view.findViewById(R.id.element_part2_image1);
+            part2ViewHolder.imageViewEl2 = (ElementImageView) view.findViewById(R.id.element_part2_image2);
+            part2ViewHolder.imageViewEl3 = (ElementImageView) view.findViewById(R.id.element_part2_image3);
+            part2ViewHolder.imageViewEl4 = (ElementImageView) view.findViewById(R.id.element_part2_image4);
 
-                elementImageView0.setElementImage(elementImageList.get(5));
-                elementImageView1.setElementImage(elementImageList.get(6));
-                elementImageView2.setElementImage(elementImageList.get(7));
-                elementImageView3.setElementImage(elementImageList.get(8));
-            }*/
-/*            else {
-                System.out.println("else");
-                elementImageView0.setVisibility(View.INVISIBLE);
-                elementImageView1.setVisibility(View.INVISIBLE);
-                elementImageView2.setVisibility(View.INVISIBLE);
-                elementImageView3.setVisibility(View.INVISIBLE);
-                elementImageView4.setVisibility(View.INVISIBLE);
-            }*/
+            part2ViewHolder.imageViewBackground.setImageBitmap(backgroundImage.getBitmap());
+
+            if(elementImageList != null) {
+                part2ViewHolder.imageViewEl0.setElementImage(elementImageList.get(5));
+                part2ViewHolder.imageViewEl1.setElementImage(elementImageList.get(6));
+                part2ViewHolder.imageViewEl2.setElementImage(elementImageList.get(7));
+                part2ViewHolder.imageViewEl3.setElementImage(elementImageList.get(8));
+            }
         }
 
         return view;

@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        ListView listView = (ListView) findViewById(R.id.listView);
+        ListView listView = (ListView) findViewById(R.id.listview);
 
         int [] drawables = {
                 R.drawable.main_part_0,
@@ -38,6 +38,11 @@ public class MainActivity extends Activity {
         }
         listBackground.get(0).setMarginTop(Math.round(-1000 * listBackground.get(0).getScaleFactor()));
         listBackground.get(4).setMarginBottom(Math.round(-1000 * listBackground.get(4).getScaleFactor()));
+        listBackground.get(0).setType(0);
+        listBackground.get(1).setType(1);
+        listBackground.get(2).setType(0);
+        listBackground.get(3).setType(2);
+        listBackground.get(4).setType(0);
 
         scaleFactor = listBackground.get(0).getScaleFactor();
 

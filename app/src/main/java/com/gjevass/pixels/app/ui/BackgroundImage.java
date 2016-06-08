@@ -13,6 +13,7 @@ public class BackgroundImage {
     private float scaleFactor;
     private Bitmap bitmap;
     private Context context;
+    private int type;
 
     public BackgroundImage(int resourceId, Context context) {
         this.resourceId = resourceId;
@@ -29,8 +30,8 @@ public class BackgroundImage {
 /*        int displayWidth = 800;
         int displayHeight = 1216;*/
 
-/*        //sem
-        int displayWidth = 320;
+        //sem
+/*        int displayWidth = 320;
         int displayHeight = 480;*/
 
         //fullHD
@@ -76,13 +77,19 @@ public class BackgroundImage {
     }
 
     public void setMarginTop(int marginTop) {
-        System.out.println("set margin top " + marginTop);
         this.marginTop = marginTop;
     }
 
     public void setMarginBottom(int marginBottom) {
-        System.out.println("set margin bottom " + marginTop);
         this.marginBottom = marginBottom;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     @Override
