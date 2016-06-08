@@ -3,8 +3,6 @@ package com.gjevass.pixels.app;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.DisplayMetrics;
-import android.view.WindowManager;
 import com.gjevass.pixels.app.util.DisplayUtil;
 
 public class ElementImage {
