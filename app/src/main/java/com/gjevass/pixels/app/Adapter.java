@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import java.util.List;
@@ -45,6 +46,9 @@ public class Adapter extends BaseAdapter {
         BackgroundImage backgroundImage = (BackgroundImage) getItem(i);
 
         ImageView imageViewBackground = (ImageView) view.findViewById(R.id.imageBackground);
+        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(imageViewBackground.getLayoutParams());
+        lp.setMargins(0, backgroundImage.getMarginTop(), 0 ,backgroundImage.getMarginBottom());
+        imageViewBackground.setLayoutParams(lp);
         imageViewBackground.setImageBitmap(backgroundImage.getBitmap());
 
         ElementImageView elementImageView0 = (ElementImageView) view.findViewById(R.id.elementImage0);
@@ -70,7 +74,7 @@ public class Adapter extends BaseAdapter {
                 elementImageView3.setElementImage(elementImageList.get(3));
                 elementImageView4.setElementImage(elementImageList.get(4));
             }
-            if(i == 3) {
+/*            if(i == 3) {
                 System.out.println("if 3");
                 elementImageView0.setVisibility(View.VISIBLE);
                 elementImageView1.setVisibility(View.VISIBLE);
@@ -82,7 +86,7 @@ public class Adapter extends BaseAdapter {
                 elementImageView1.setElementImage(elementImageList.get(6));
                 elementImageView2.setElementImage(elementImageList.get(7));
                 elementImageView3.setElementImage(elementImageList.get(8));
-            }
+            }*/
 /*            else {
                 System.out.println("else");
                 elementImageView0.setVisibility(View.INVISIBLE);

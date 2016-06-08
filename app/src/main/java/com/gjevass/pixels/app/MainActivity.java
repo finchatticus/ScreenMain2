@@ -31,10 +31,12 @@ public class MainActivity extends Activity {
 
         List<BackgroundImage> listBackground = new ArrayList<BackgroundImage>();
         for (int i = 0; i < 5; i++) {
-            listBackground.add(new BackgroundImage(drawables[i], 0, 0, this));
+            listBackground.add(new BackgroundImage(drawables[i], this));
         }
-        listBackground.get(0).setMarginTop(Math.round(-1000 * scaleFactor));
-        listBackground.get(4).setMarginBottom(Math.round(-1000 * scaleFactor));
+        BackgroundImage backgroundImage0 = listBackground.get(0);
+        BackgroundImage backgroundImage4 = listBackground.get(4);
+        backgroundImage0.setMarginTop(Math.round(-1000 * backgroundImage0.getScaleFactor()));
+        backgroundImage4.setMarginBottom(Math.round(-1000 * backgroundImage0.getScaleFactor()));
         System.out.println(listBackground.get(0).toString());
         System.out.println(listBackground.get(4).toString());
 
@@ -53,27 +55,7 @@ public class MainActivity extends Activity {
         @Override
         protected List<Bitmap> doInBackground(Void... voids) {
             JSONParser jsonParser = new JSONParser(context);
-            List<Bitmap> posters = jsonParser.getPosters();
-            Bitmap bitmap0 = posters.get(0);
-            System.out.println("bitmap_width " + bitmap0.getWidth());
-            System.out.println("bitmap_height " + bitmap0.getHeight());
-/*            Bitmap bitmapScalled0 = Bitmap.createScaledBitmap(bitmap0, 222, 325, true);
-
-            Bitmap bitmap1 = posters.get(1);
-            Bitmap bitmapScalled1 = Bitmap.createScaledBitmap(bitmap1, 212, 300, true);
-
-            Bitmap bitmap2 = posters.get(2);
-            Bitmap bitmapScalled2 = Bitmap.createScaledBitmap(bitmap2, 212, 300, true);
-
-            Bitmap bitmap3 = posters.get(3);
-            Bitmap bitmapScalled3 = Bitmap.createScaledBitmap(bitmap3, 212, 300, true);
-
-            posters.set(0, bitmapScalled0);
-            posters.set(1, bitmapScalled1);
-            posters.set(2, bitmapScalled2);
-            posters.set(3, bitmapScalled3);*/
-
-            return posters;
+            return jsonParser.getPosters();
         }
 
         @Override
