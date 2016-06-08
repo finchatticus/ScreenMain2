@@ -11,36 +11,36 @@
             android:adjustViewBounds="true"
             android:layout_gravity="left"
             android:id="@+id/imageBackground"
-            android:contentDescription="test"/>
+            android:contentDescription="@string/description_imageview_background"/>
 
-    <com.gjevass.pixels.app.ElementImageView
+    <com.gjevass.pixels.app.ui.ElementImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/elementImage0"
-            android:contentDescription="test"/>
+            android:contentDescription="@string/description_elementimageview"/>
 
-    <com.gjevass.pixels.app.ElementImageView
+    <com.gjevass.pixels.app.ui.ElementImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/elementImage1"
-            android:contentDescription="test"/>
+            android:contentDescription="@string/description_elementimageview"/>
 
-    <com.gjevass.pixels.app.ElementImageView
+    <com.gjevass.pixels.app.ui.ElementImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/elementImage2"
-            android:contentDescription="test"/>
+            android:contentDescription="@string/description_elementimageview"/>
 
-    <com.gjevass.pixels.app.ElementImageView
+    <com.gjevass.pixels.app.ui.ElementImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/elementImage3"
-            android:contentDescription="test"/>
+            android:contentDescription="@string/description_elementimageview"/>
 
-    <com.gjevass.pixels.app.ElementImageView
+    <com.gjevass.pixels.app.ui.ElementImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/elementImage4"
-            android:contentDescription="test"/>
+            android:contentDescription="@string/description_elementimageview"/>
 
 </FrameLayout>

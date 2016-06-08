@@ -7,6 +7,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ListView;
 import com.gjevass.pixels.app.json.JSONParser;
+import com.gjevass.pixels.app.ui.Adapter;
+import com.gjevass.pixels.app.ui.BackgroundImage;
+import com.gjevass.pixels.app.ui.ElementImage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +36,8 @@ public class MainActivity extends Activity {
         for (int i = 0; i < 5; i++) {
             listBackground.add(new BackgroundImage(drawables[i], this));
         }
-        BackgroundImage backgroundImage0 = listBackground.get(0);
-        BackgroundImage backgroundImage4 = listBackground.get(4);
-        backgroundImage0.setMarginTop(Math.round(-1000 * backgroundImage0.getScaleFactor()));
-        backgroundImage4.setMarginBottom(Math.round(-1000 * backgroundImage0.getScaleFactor()));
-        System.out.println(listBackground.get(0).toString());
-        System.out.println(listBackground.get(4).toString());
+        listBackground.get(0).setMarginTop(Math.round(-1000 * listBackground.get(0).getScaleFactor()));
+        listBackground.get(4).setMarginBottom(Math.round(-1000 * listBackground.get(4).getScaleFactor()));
 
         scaleFactor = listBackground.get(0).getScaleFactor();
 

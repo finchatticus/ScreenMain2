@@ -1,4 +1,4 @@
-package com.gjevass.pixels.app;
+package com.gjevass.pixels.app.ui;
 
 import android.content.Context;
 import android.graphics.Bitmap;
