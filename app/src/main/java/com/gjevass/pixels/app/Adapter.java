@@ -1,12 +1,10 @@
 package com.gjevass.pixels.app;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import java.util.List;
@@ -47,8 +45,6 @@ public class Adapter extends BaseAdapter {
         BackgroundImage backgroundImage = (BackgroundImage) getItem(i);
 
         ImageView imageViewBackground = (ImageView) view.findViewById(R.id.imageBackground);
-        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(imageViewBackground.getLayoutParams());
-        lp.setMargins(0, backgroundImage.getMarginTop(), 0, backgroundImage.getMarginBottom());
         imageViewBackground.setImageBitmap(backgroundImage.getBitmap());
 
         ElementImageView elementImageView0 = (ElementImageView) view.findViewById(R.id.elementImage0);
@@ -57,21 +53,44 @@ public class Adapter extends BaseAdapter {
         ElementImageView elementImageView3 = (ElementImageView) view.findViewById(R.id.elementImage3);
         ElementImageView elementImageView4 = (ElementImageView) view.findViewById(R.id.elementImage4);
 
+        System.out.println("i = " + i);
+
         if(elementImageList != null) {
             if(i == 1) {
-                elementImageView0.setElementImage(elementImageList.get(2));
-                elementImageView1.setElementImage(elementImageList.get(3));
-                elementImageView2.setElementImage(elementImageList.get(0));
-                elementImageView3.setElementImage(elementImageList.get(1));
+                System.out.println("if 1");
+                elementImageView0.setVisibility(View.VISIBLE);
+                elementImageView1.setVisibility(View.VISIBLE);
+                elementImageView2.setVisibility(View.VISIBLE);
+                elementImageView3.setVisibility(View.VISIBLE);
+                elementImageView4.setVisibility(View.VISIBLE);
+
+                elementImageView0.setElementImage(elementImageList.get(0));
+                elementImageView1.setElementImage(elementImageList.get(2));
+                elementImageView2.setElementImage(elementImageList.get(1));
+                elementImageView3.setElementImage(elementImageList.get(3));
                 elementImageView4.setElementImage(elementImageList.get(4));
             }
             if(i == 3) {
+                System.out.println("if 3");
+                elementImageView0.setVisibility(View.VISIBLE);
+                elementImageView1.setVisibility(View.VISIBLE);
+                elementImageView2.setVisibility(View.VISIBLE);
+                elementImageView3.setVisibility(View.VISIBLE);
+                elementImageView4.setVisibility(View.GONE);
+
                 elementImageView0.setElementImage(elementImageList.get(5));
                 elementImageView1.setElementImage(elementImageList.get(6));
                 elementImageView2.setElementImage(elementImageList.get(7));
                 elementImageView3.setElementImage(elementImageList.get(8));
-                elementImageView4.setVisibility(View.INVISIBLE);
             }
+/*            else {
+                System.out.println("else");
+                elementImageView0.setVisibility(View.INVISIBLE);
+                elementImageView1.setVisibility(View.INVISIBLE);
+                elementImageView2.setVisibility(View.INVISIBLE);
+                elementImageView3.setVisibility(View.INVISIBLE);
+                elementImageView4.setVisibility(View.INVISIBLE);
+            }*/
         }
 
         return view;

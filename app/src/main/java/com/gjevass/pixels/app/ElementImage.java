@@ -13,15 +13,17 @@ public class ElementImage {
     private int y;
     private float rotation;
     private float scaleFactor;
+    private float scaleFactorDimension;
     private int resourceId;
     private Bitmap bitmap;
     private Context context;
 
-    public ElementImage(int x, int y, float rotation, float scaleFactor, int resourceId, Context context) {
+    public ElementImage(int x, int y, float rotation, float scaleFactor, float scaleFactorDimension, int resourceId, Context context) {
         this.x = x;
         this.y = y;
         this.rotation = rotation;
         this.scaleFactor = scaleFactor;
+        this.scaleFactorDimension = scaleFactorDimension;
         this.resourceId = resourceId;
         this.context = context;
 
@@ -29,13 +31,16 @@ public class ElementImage {
         calc(bitmap);
     }
 
-    public ElementImage(int x, int y, float rotation, float scaleFactor, Bitmap bitmap, Context context) {
+    public ElementImage(int x, int y, float rotation, float scaleFactor, float scaleFactorDimension, Bitmap bitmap, Context context) {
         this.x = x;
         this.y = y;
         this.rotation = rotation;
         this.scaleFactor = scaleFactor;
+        this.scaleFactorDimension = scaleFactorDimension;
         this.bitmap = bitmap;
         this.context = context;
+
+        calc(bitmap);
     }
 
     private void calc(Bitmap bitmap) {
@@ -45,8 +50,8 @@ public class ElementImage {
         DisplayUtil displayUtil = new DisplayUtil(context);
         float density = displayUtil.getDensity();
 
-        this.height = Math.round((bitmap.getHeight() / density) * scaleFactor);
-        this.width = Math.round((bitmap.getWidth() / density) * scaleFactor);
+        this.height = Math.round((bitmap.getHeight() / density) * scaleFactor * scaleFactorDimension);
+        this.width = Math.round((bitmap.getWidth() / density) * scaleFactor * scaleFactorDimension);
         this.bitmap = Bitmap.createScaledBitmap(bitmap, this.width, this.height, true);
     }
 

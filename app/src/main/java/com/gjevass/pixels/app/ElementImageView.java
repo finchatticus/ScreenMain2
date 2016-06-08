@@ -25,6 +25,8 @@ public class ElementImageView extends ImageView {
         int marginTop = elementImage.getY();
         float rotate = elementImage.getRotation();
         Bitmap bitmap = elementImage.getBitmap();
+/*        System.out.println("bitmap_height " + bitmap.getHeight());
+        System.out.println("bitmap_width " + bitmap.getWidth());*/
 
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(this.getLayoutParams());
         lp.setMargins(marginLeft, marginTop, 0, 0);

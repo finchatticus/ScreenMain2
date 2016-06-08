@@ -14,24 +14,26 @@ public class BackgroundImage {
     private Bitmap bitmap;
     private Context context;
 
-    public BackgroundImage(int resourceId, Context context) {
+    public BackgroundImage(int resourceId, int marginTop, int marginBottom, Context context) {
         this.resourceId = resourceId;
+        this.marginBottom = marginBottom;
+        this.marginTop = marginTop;
 
         DisplayUtil displayUtil = new DisplayUtil(context);
         ImageUtil imageUtil = new ImageUtil(resourceId, context);
 
         int imageWidth = imageUtil.getRealWidth();
         int imageHeight = imageUtil.getRealHeight();
-        int displayWidth = displayUtil.getWidth();
-        int displayHeight = displayUtil.getHeight();
+/*        int displayWidth = displayUtil.getWidth();
+        int displayHeight = displayUtil.getHeight();*/
 
         //my
-        /*int displayWidth = 800;
+/*        int displayWidth = 800;
         int displayHeight = 1216;*/
 
         //sem
-/*        int displayWidth = 320;
-        int displayHeight = 480;*/
+        int displayWidth = 320;
+        int displayHeight = 480;
 
         //fullHD
 /*        int displayWidth = 1080;

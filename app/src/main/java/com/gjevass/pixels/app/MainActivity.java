@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
 
         List<BackgroundImage> listBackground = new ArrayList<BackgroundImage>();
         for (int i = 0; i < 5; i++) {
-            listBackground.add(new BackgroundImage(drawables[i], this));
+            listBackground.add(new BackgroundImage(drawables[i], 0, 0, this));
         }
         listBackground.get(0).setMarginTop(Math.round(-1000 * scaleFactor));
         listBackground.get(4).setMarginBottom(Math.round(-1000 * scaleFactor));
@@ -55,7 +55,9 @@ public class MainActivity extends Activity {
             JSONParser jsonParser = new JSONParser(context);
             List<Bitmap> posters = jsonParser.getPosters();
             Bitmap bitmap0 = posters.get(0);
-            Bitmap bitmapScalled0 = Bitmap.createScaledBitmap(bitmap0, 212, 300, true);
+            System.out.println("bitmap_width " + bitmap0.getWidth());
+            System.out.println("bitmap_height " + bitmap0.getHeight());
+/*            Bitmap bitmapScalled0 = Bitmap.createScaledBitmap(bitmap0, 222, 325, true);
 
             Bitmap bitmap1 = posters.get(1);
             Bitmap bitmapScalled1 = Bitmap.createScaledBitmap(bitmap1, 212, 300, true);
@@ -69,7 +71,7 @@ public class MainActivity extends Activity {
             posters.set(0, bitmapScalled0);
             posters.set(1, bitmapScalled1);
             posters.set(2, bitmapScalled2);
-            posters.set(3, bitmapScalled3);
+            posters.set(3, bitmapScalled3);*/
 
             return posters;
         }
@@ -80,24 +82,24 @@ public class MainActivity extends Activity {
 
             List<ElementImage> elementImageList = new ArrayList<ElementImage>();
             //poster1
-            elementImageList.add(new ElementImage( Math.round(130 * scaleFactor) ,Math.round( 617 * scaleFactor), 3, scaleFactor, posters.get(0), context));
+            elementImageList.add(new ElementImage( 130 , 617 , 3, scaleFactor, 1.35f, posters.get(0), context));
             //poster2
-            elementImageList.add(new ElementImage(334, 677, -1, scaleFactor, posters.get(1), context));
+            elementImageList.add(new ElementImage(334, 677, -1, scaleFactor, 1.35f, posters.get(1), context));
             //poster1 frame
-            elementImageList.add(new ElementImage(124, 611, 3, scaleFactor, R.drawable.main_poster_frame, context));
+            elementImageList.add(new ElementImage(124, 611, 3, scaleFactor, 1, R.drawable.main_poster_frame, context));
             //poster2 frame
-            elementImageList.add(new ElementImage(328, 671, -1, scaleFactor, R.drawable.main_poster_frame, context));
+            elementImageList.add(new ElementImage(328, 671, -1, scaleFactor, 1, R.drawable.main_poster_frame, context));
             //sticks frame
-            elementImageList.add(new ElementImage(110, 595, 0, scaleFactor, R.drawable.main_sticks, context));
+            elementImageList.add(new ElementImage(110, 595, 0, scaleFactor, 1, R.drawable.main_sticks, context));
 
             //poster3
-            elementImageList.add(new ElementImage(84, 1100, 2, scaleFactor, posters.get(2), context));
+            elementImageList.add(new ElementImage(84, 1100, 2, scaleFactor, 1.35f, posters.get(2), context));
             //poster4
-            elementImageList.add(new ElementImage(372, 1098, 2.5f, scaleFactor, posters.get(3), context));
+            elementImageList.add(new ElementImage(372, 1098, 2.5f, scaleFactor, 1.35f, posters.get(3), context));
             //pin
-            elementImageList.add(new ElementImage(212, 206, 0, scaleFactor, R.drawable.main_pin, context));
+            elementImageList.add(new ElementImage(212, 206, 0, scaleFactor, 1, R.drawable.main_pin, context));
             //light
-            elementImageList.add(new ElementImage(344, 495, 0, scaleFactor, R.drawable.main_light, context));
+            elementImageList.add(new ElementImage(344, 495, 0, scaleFactor, 1, R.drawable.main_light, context));
             //sticker
             //elementImageList.add(new ElementImage(372, 1098, 2.5f, scaleFactor, R.drawable.test_pst, context));
 
