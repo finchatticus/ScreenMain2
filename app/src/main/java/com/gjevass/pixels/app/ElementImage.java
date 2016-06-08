@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
+import com.gjevass.pixels.app.util.DisplayUtil;
 
 public class ElementImage {
 
@@ -43,10 +44,8 @@ public class ElementImage {
         this.x = Math.round(this.x * scaleFactor);
         this.y = Math.round(this.y * scaleFactor);
 
-        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        windowManager.getDefaultDisplay().getMetrics(displayMetrics);
-        float density = displayMetrics.density;
+        DisplayUtil displayUtil = new DisplayUtil(context);
+        float density = displayUtil.getDensity();
 
         this.height = Math.round((bitmap.getHeight() / density) * scaleFactor);
         this.width = Math.round((bitmap.getWidth() / density) * scaleFactor);
