@@ -69,15 +69,15 @@ public class MainActivity extends Activity {
 
             List<ElementImage> elementImageList = new ArrayList<ElementImage>();
             //poster1
-            elementImageList.add(new ElementImage( 130 , 617 , 3, scaleFactor, posters.get(0), context));
+            elementImageList.add(new ElementImage(130 , 617 , 3, scaleFactor, posters.get(0), context));
             //poster2
             elementImageList.add(new ElementImage(334, 677, -1, scaleFactor, posters.get(1), context));
             //poster1 frame
-            elementImageList.add(new ElementImage(124, 611, 3, scaleFactor, R.drawable.main_poster_frame, context));
+            elementImageList.add(new ElementImage(121, 608, 3, scaleFactor, R.drawable.main_poster_frame, context));
             //poster2 frame
-            elementImageList.add(new ElementImage(328, 671, -1, scaleFactor, R.drawable.main_poster_frame, context));
+            elementImageList.add(new ElementImage(325, 668, -1, scaleFactor, R.drawable.main_poster_frame, context));
             //sticks frame
-            elementImageList.add(new ElementImage(110, 595, 0, scaleFactor, R.drawable.main_sticks, context));
+            elementImageList.add(new ElementImage(106, 587, 0, scaleFactor, R.drawable.main_sticks, context));
 
             //poster3
             elementImageList.add(new ElementImage(84, 1100, 2, scaleFactor, posters.get(2), context));

@@ -26,10 +26,9 @@ public class ElementImage {
         this.context = context;
 
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), resourceId);
-
         DisplayUtil displayUtil = new DisplayUtil(context);
-        float density = displayUtil.getDensity();
 
+        float density = displayUtil.getDensity();
         this.height = Math.round((bitmap.getHeight() / density) * scaleFactor);
         this.width = Math.round((bitmap.getWidth() / density) * scaleFactor);
         this.bitmap = Bitmap.createScaledBitmap(bitmap, this.width, this.height, true);
@@ -42,10 +41,6 @@ public class ElementImage {
         this.scaleFactor = scaleFactor;
         this.bitmap = bitmap;
         this.context = context;
-
-        DisplayUtil displayUtil = new DisplayUtil(context);
-        float density = displayUtil.getDensity();
-
         this.height = Math.round(bitmap.getHeight() * scaleFactor);
         this.width = Math.round(bitmap.getWidth() * scaleFactor);
         this.bitmap = Bitmap.createScaledBitmap(bitmap, this.width, this.height, true);
