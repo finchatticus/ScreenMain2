@@ -31,7 +31,7 @@ public class Adapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
+    public BackgroundImage getItem(int i) {
         return listBackground.get(i);
     }
 
@@ -66,7 +66,7 @@ public class Adapter extends BaseAdapter {
 
         int type = getItemViewType(i);
 
-        BackgroundImage backgroundImage = (BackgroundImage) getItem(i);
+        BackgroundImage backgroundImage = getItem(i);
 
         if(type == ViewType.EMPTY.getType()) {
             view = layoutInflater.inflate(R.layout.item_empty, parent, false);
