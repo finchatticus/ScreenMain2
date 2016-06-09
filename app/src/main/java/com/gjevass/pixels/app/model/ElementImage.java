@@ -3,7 +3,6 @@ package com.gjevass.pixels.app.model;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import com.gjevass.pixels.app.util.DisplayUtil;
 
 public class ElementImage {
@@ -14,45 +13,41 @@ public class ElementImage {
     private int y;
     private float rotation;
     private float scaleFactor;
-    private float scaleFactorDimension;
     private int resourceId;
     private Bitmap bitmap;
     private Context context;
 
-    public ElementImage(int x, int y, float rotation, float scaleFactor, float scaleFactorDimension, int resourceId, Context context) {
-        this.x = x;
-        this.y = y;
+    public ElementImage(int x, int y, float rotation, float scaleFactor, int resourceId, Context context) {
+        this.x = Math.round(x * scaleFactor);
+        this.y = Math.round(y * scaleFactor);
         this.rotation = rotation;
         this.scaleFactor = scaleFactor;
-        this.scaleFactorDimension = scaleFactorDimension;
         this.resourceId = resourceId;
         this.context = context;
 
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), resourceId);
-        calc(bitmap);
-    }
-
-    public ElementImage(int x, int y, float rotation, float scaleFactor, float scaleFactorDimension, Bitmap bitmap, Context context) {
-        this.x = x;
-        this.y = y;
-        this.rotation = rotation;
-        this.scaleFactor = scaleFactor;
-        this.scaleFactorDimension = scaleFactorDimension;
-        this.bitmap = bitmap;
-        this.context = context;
-
-        calc(bitmap);
-    }
-
-    private void calc(Bitmap bitmap) {
-        this.x = Math.round(this.x * scaleFactor);
-        this.y = Math.round(this.y * scaleFactor);
 
         DisplayUtil displayUtil = new DisplayUtil(context);
         float density = displayUtil.getDensity();
 
-        this.height = Math.round((bitmap.getHeight() / density) * scaleFactor * scaleFactorDimension);
-        this.width = Math.round((bitmap.getWidth() / density) * scaleFactor * scaleFactorDimension);
+        this.height = Math.round((bitmap.getHeight() / density) * scaleFactor);
+        this.width = Math.round((bitmap.getWidth() / density) * scaleFactor);
+        this.bitmap = Bitmap.createScaledBitmap(bitmap, this.width, this.height, true);
+    }
+
+    public ElementImage(int x, int y, float rotation, float scaleFactor, Bitmap bitmap, Context context) {
+        this.x = Math.round(x * scaleFactor);
+        this.y = Math.round(y * scaleFactor);
+        this.rotation = rotation;
+        this.scaleFactor = scaleFactor;
+        this.bitmap = bitmap;
+        this.context = context;
+
+        DisplayUtil displayUtil = new DisplayUtil(context);
+        float density = displayUtil.getDensity();
+
+        this.height = Math.round(bitmap.getHeight() * scaleFactor);
+        this.width = Math.round(bitmap.getWidth() * scaleFactor);
         this.bitmap = Bitmap.createScaledBitmap(bitmap, this.width, this.height, true);
     }
 

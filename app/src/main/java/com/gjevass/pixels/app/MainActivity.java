@@ -11,7 +11,6 @@ import com.gjevass.pixels.app.ui.Adapter;
 import com.gjevass.pixels.app.model.BackgroundImage;
 import com.gjevass.pixels.app.model.ElementImage;
 import com.gjevass.pixels.app.ui.ViewType;
-import com.gjevass.pixels.app.util.ImageUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,29 +68,25 @@ public class MainActivity extends Activity {
             super.onPostExecute(posters);
 
             List<ElementImage> elementImageList = new ArrayList<ElementImage>();
-            //poster1 frame
-            elementImageList.add(new ElementImage(124, 611, 3, scaleFactor, 1, R.drawable.main_poster_frame, context));
-            //poster2 frame
-            elementImageList.add(new ElementImage(328, 671, -1, scaleFactor, 1, R.drawable.main_poster_frame, context));
-
-            ImageUtil imageUtil = new ImageUtil(posters.get(0), context);
-            float scaleFactorDimensions = (elementImageList.get(0).getWidth() - 14 * scaleFactor ) / (imageUtil.getRealWidth() * scaleFactor);
-
             //poster1
-            elementImageList.add(new ElementImage( 130 , 617 , 3, scaleFactor, scaleFactorDimensions, posters.get(0), context));
+            elementImageList.add(new ElementImage( 130 , 617 , 3, scaleFactor, posters.get(0), context));
             //poster2
-            elementImageList.add(new ElementImage(334, 677, -1, scaleFactor, scaleFactorDimensions, posters.get(1), context));
+            elementImageList.add(new ElementImage(334, 677, -1, scaleFactor, posters.get(1), context));
+            //poster1 frame
+            elementImageList.add(new ElementImage(124, 611, 3, scaleFactor, R.drawable.main_poster_frame, context));
+            //poster2 frame
+            elementImageList.add(new ElementImage(328, 671, -1, scaleFactor, R.drawable.main_poster_frame, context));
             //sticks frame
-            elementImageList.add(new ElementImage(110, 595, 0, scaleFactor, 1, R.drawable.main_sticks, context));
+            elementImageList.add(new ElementImage(110, 595, 0, scaleFactor, R.drawable.main_sticks, context));
 
             //poster3
-            elementImageList.add(new ElementImage(84, 1100, 2, scaleFactor, scaleFactorDimensions, posters.get(2), context));
+            elementImageList.add(new ElementImage(84, 1100, 2, scaleFactor, posters.get(2), context));
             //poster4
-            elementImageList.add(new ElementImage(372, 1098, 2.5f, scaleFactor, scaleFactorDimensions, posters.get(3), context));
+            elementImageList.add(new ElementImage(372, 1098, 2.5f, scaleFactor, posters.get(3), context));
             //pin
-            elementImageList.add(new ElementImage(212, 206, 0, scaleFactor, 1, R.drawable.main_pin, context));
+            elementImageList.add(new ElementImage(212, 206, 0, scaleFactor, R.drawable.main_pin, context));
             //light
-            elementImageList.add(new ElementImage(344, 495, 0, scaleFactor, 1, R.drawable.main_light, context));
+            elementImageList.add(new ElementImage(344, 495, 0, scaleFactor, R.drawable.main_light, context));
             //sticker
             //elementImageList.add(new ElementImage(372, 1098, 2.5f, scaleFactor, R.drawable.test_pst, context));
 
